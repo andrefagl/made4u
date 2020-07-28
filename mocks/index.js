@@ -2760,7 +2760,7 @@ export const wishlists = [
 export const recommendations = [
     {
         id: 1,
-        name: "Dressed in floweres",
+        name: "Dressed in flowers",
         products: [recommendedProducts[0], recommendedProducts[1]],
     },
     {
@@ -2780,7 +2780,7 @@ export const recommendedWishlists = [
         id: 1,
         slug: "family-weekend",
         name: "Family weekend",
-        coverImage: products[2].alternativeImage,
+        coverImage: products[6].alternativeImage,
         description: "On the country house",
         products: [products[2], products[3], products[6], products[7]],
     },
@@ -2789,7 +2789,7 @@ export const recommendedWishlists = [
         slug: "a-field-retreat",
         name: "A field retreat",
         coverImage: products[10].alternativeImage,
-        description: "On the country house",
+        description: "Glam camping with the girls",
         products: [
             products[10],
             products[11],
