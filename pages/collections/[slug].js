@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import { wishlist } from "../../mocks";
 import { Fragment } from "react";
+import cardStyles from "../../styles/Card.module.css";
+
 const { wishlistItems } = wishlist;
 
 const lists = [
@@ -24,13 +26,13 @@ const lists = [
 
 const ProductCard = ({ product }) => {
     return (
-        <div className="product-card">
+        <div className={cardStyles.main}>
             <img src={product.mainImage} />
             <span>{product.productName}</span>
             <span>{product.priceInformation.formattedPrice}</span>
         </div>
     );
-}
+};
 
 const Collection = () => {
     const router = useRouter();
@@ -40,17 +42,20 @@ const Collection = () => {
     } = router;
 
     const listDetails = lists.find((list) => list.slug === slug);
-    console.log(listDetails);
 
-    return (<Fragment>
-        <h2>{listDetails.name}</h2>
-        <div>
-            {listDetails.products.map((product) => (
-                <ProductCard product={product} />
-            ))}
-        </div>
-        <h3>Made for you</h3>
-    </Fragment>);
+    if (!slug || !listDetails) return null;
+
+    return (
+        <>
+            <h2>{listDetails.name}</h2>
+            <div>
+                {listDetails.products.map((product) => (
+                    <ProductCard product={product} />
+                ))}
+            </div>
+            <h3>Made for you</h3>
+        </>
+    );
 };
 
 export default Collection;
