@@ -4,6 +4,7 @@ import cardStyles from "../../styles/Card.module.css";
 import gridStyles from "../../styles/Grid.module.css";
 import generalStyles from "../../styles/General.module.css";
 import List from "../../Components/List";
+import Link from "next/link";
 
 const Grid = ({ children }) => (
     <div className={gridStyles.main}>{children}</div>
@@ -43,7 +44,12 @@ const Collection = () => {
                     <ProductCard product={product} />
                 ))}
             </Grid>
-            <h2 className={generalStyles.subTitle}>Made for you</h2>
+            <h2
+                className={generalStyles.subTitle}
+                style={{ marginTop: "68px" }}
+            >
+                Made for you
+            </h2>
             {recommendations.map((rec) => (
                 <div
                     className={generalStyles.recomendationSection}
@@ -62,6 +68,10 @@ const Collection = () => {
             {recommendedWishlists.map((list) => (
                 <List key={list.id} data={list} />
             ))}
+
+            <Link href="/">
+                <a className={generalStyles.backButton}>Back to collections</a>
+            </Link>
         </>
     );
 };
