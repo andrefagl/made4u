@@ -28,8 +28,12 @@ const ProductCard = ({ product }) => {
     return (
         <div className={cardStyles.main}>
             <img src={product.mainImage} />
+            <span className={cardStyles.brandName}>{product.brandName}</span>
             <span>{product.productName}</span>
-            <span>{product.priceInformation.formattedPrice}</span>
+            <div className={cardStyles.priceContainer}>
+                <span>{product.priceInformation.formattedPrice}</span>
+            </div>
+
         </div>
     );
 };
