@@ -5,6 +5,7 @@
 .card {
     display: flex;
     margin-bottom: 3rem;
+    /* height: 12rem; */
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
@@ -13,7 +14,7 @@
 }
 
 .cover img {
-    max-width: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
 }
@@ -23,6 +24,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 70%;
 }
 
 .items {

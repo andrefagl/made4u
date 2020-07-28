@@ -1,29 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import listStyles from "../styles/List.module.css";
-import { wishlist } from "../mocks";
+import { wishlists } from "../mocks";
 import Link from "next/link";
-
-const { wishlistItems } = wishlist;
-// Temp Data
-const lists = [
-    {
-        id: 1,
-        slug: "country-side-escape",
-        name: "Country Side Escape",
-        coverImage: wishlistItems[2].alternativeImage,
-        description: "My favourite Farfetch floral dresses",
-        products: [wishlistItems[1], wishlistItems[2], wishlistItems[5]],
-    },
-    {
-        id: 2,
-        slug: "totally-random",
-        name: "Totally random",
-        coverImage: wishlistItems[9].alternativeImage,
-        description: "Some random pieces to buy later",
-        products: [],
-    },
-];
 
 const Card = ({ product }) => {
     return (
@@ -66,14 +45,8 @@ export default function Home() {
             <section className={styles.container}>
                 <h1>Collections</h1>
                 <div>
-                    {lists.map((list) => (
+                    {wishlists.map((list) => (
                         <List key={list.id} data={list} />
-                    ))}
-                </div>
-
-                <div>
-                    {wishlistItems.map((product) => (
-                        <Card product={product} />
                     ))}
                 </div>
             </section>

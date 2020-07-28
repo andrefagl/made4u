@@ -2,9 +2,20 @@
     display: flex;
     flex-direction: column;
     width: 50%;
-    padding: 1.2rem;
+    text-align: center;
+    padding: var(--spacer-S);
 }
 
 .main img {
     width: -webkit-fill-available;
+}
+
+.brandName {
+    font-weight: bold;
+    margin-top: var(--spacer-S);
+    margin-bottom: var(--spacer-XS);
+}
+
+.priceContainer {
+    margin-top: var(--spacer-S);
 }
