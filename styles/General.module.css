@@ -27,3 +27,22 @@
     font-weight: bold;
     text-align: center;
 }
+
+.ball {
+    height: 6px;
+    width: 6px;
+    background: #ccc;
+    display: block;
+    margin-left: 6px;
+    border-radius: 50%;
+}
+
+.ball.active {
+    background: #222;
+}
+
+.balls {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}

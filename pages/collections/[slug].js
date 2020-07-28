@@ -5,6 +5,7 @@ import gridStyles from "../../styles/Grid.module.css";
 import generalStyles from "../../styles/General.module.css";
 import List from "../../Components/List";
 import Link from "next/link";
+import cx from "classnames";
 
 const Grid = ({ children }) => (
     <div className={gridStyles.main}>{children}</div>
@@ -63,8 +64,23 @@ const Collection = () => {
                             <ProductCard key={product.id} product={product} />
                         ))}
                     </Grid>
+                    <div className={generalStyles.balls}>
+                        <span
+                            className={cx(
+                                generalStyles.ball,
+                                generalStyles.active
+                            )}
+                        ></span>
+                        <span className={generalStyles.ball}></span>
+                    </div>
                 </div>
             ))}
+            <h2
+                className={generalStyles.subTitle}
+                style={{ marginTop: "68px", marginBottom: "30px" }}
+            >
+                Explore similar collections
+            </h2>
             {recommendedWishlists.map((list) => (
                 <List key={list.id} data={list} />
             ))}
