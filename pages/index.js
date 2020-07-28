@@ -1,65 +1,82 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import listStyles from "../styles/List.module.css";
+import { wishlist } from "../mocks";
+import Link from "next/link";
+
+const { wishlistItems } = wishlist;
+// Temp Data
+const lists = [
+    {
+        id: 1,
+        slug: "country-side-escape",
+        name: "Country Side Escape",
+        coverImage: wishlistItems[2].alternativeImage,
+        description: "My favourite Farfetch floral dresses",
+        products: [wishlistItems[1], wishlistItems[2], wishlistItems[5]],
+    },
+    {
+        id: 2,
+        slug: "totally-random",
+        name: "Totally random",
+        coverImage: wishlistItems[9].alternativeImage,
+        description: "Some random pieces to buy later",
+        products: [],
+    },
+];
+
+const Card = ({ product }) => {
+    return (
+        <div className="card">
+            <img src={product.alternativeImage} />
+        </div>
+    );
+};
+
+const List = ({ data }) => {
+    const { name, coverImage, description, products, slug } = data;
+    const numItems = products.length;
+    return (
+        <Link href={`/collections/${slug}`}>
+            <a>
+                <div>
+                    <h1 className={listStyles.title}>{name}</h1>
+                    <div className={listStyles.card}>
+                        <div className={listStyles.cover}>
+                            <img src={coverImage} />
+                        </div>
+                        <div className={listStyles.summary}>
+                            <div className={listStyles.description}>
+                                {description}
+                            </div>
+                            <div className={listStyles.items}>
+                                {numItems} Items
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </Link>
+    );
+};
 
 export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    return (
+        <>
+            <section className={styles.container}>
+                <h1>Collections</h1>
+                <div>
+                    {lists.map((list) => (
+                        <List key={list.id} data={list} />
+                    ))}
+                </div>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+                <div>
+                    {wishlistItems.map((product) => (
+                        <Card product={product} />
+                    ))}
+                </div>
+            </section>
+        </>
+    );
 }
